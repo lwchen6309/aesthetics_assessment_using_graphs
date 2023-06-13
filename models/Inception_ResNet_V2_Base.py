@@ -7,12 +7,14 @@ import os
 import sys
 import pdb
 
+
 __all__ = ['InceptionResNetV2', 'inceptionresnetv2']
 
 pretrained_settings = {
     'inceptionresnetv2': {
         'imagenet': {
-            'url': 'http://data.lip6.fr/cadene/pretrainedmodels/inceptionresnetv2-520b38e4.pth',
+            # 'url': 'http://data.lip6.fr/cadene/pretrainedmodels/inceptionresnetv2-520b38e4.pth',
+            'url': 'https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/inception_resnet_v2-940b1cd6.pth',
             'input_space': 'RGB',
             'input_size': [3, 299, 299],
             'input_range': [0, 1],
@@ -371,13 +373,13 @@ def inceptionresnetv2(num_classes=1000, pretrained='imagenet'):
         #pdb.set_trace()
         # both 'imagenet'&'imagenet+background' are loaded from same parameters
         model = InceptionResNetV2(num_classes=1001)
-        model.load_state_dict(model_zoo.load_url(settings['url']))
+        model.load_state_dict(model_zoo.load_url(settings['url']), strict=False)
 
-        if pretrained == 'imagenet':
-            new_last_linear = nn.Linear(1536, 1000)
-            new_last_linear.weight.data = model.last_linear.weight.data[1:]
-            new_last_linear.bias.data = model.last_linear.bias.data[1:]
-            model.last_linear = new_last_linear
+        # if pretrained == 'imagenet':
+        #     new_last_linear = nn.Linear(1536, 1000)
+        #     new_last_linear.weight.data = model.last_linear.weight.data[1:]
+        #     new_last_linear.bias.data = model.last_linear.bias.data[1:]
+        #     model.last_linear = new_last_linear
 
         model.input_space = settings['input_space']
         model.input_size = settings['input_size']

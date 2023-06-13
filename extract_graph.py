@@ -9,9 +9,9 @@ import pdb
 import torch.nn.functional as F
 
 #Custom Modules
-sys.path.append('utils');
-sys.path.append('dataloaders');
-sys.path.append('models');
+sys.path.append('utils')
+sys.path.append('dataloaders')
+sys.path.append('models')
 import opts_extractor as opts
 import Augmentation as ag
 import Dataloader_misc as dlm
@@ -28,11 +28,11 @@ print(colored('\n'.join(sorted([str(i) + ' : ' + str(j) for (i, j) in vars(args)
 print('######################################')
 
 # input augmentation
-DAug = ag.Augmentation(args.aug, args.data_precision);
-data_transforms = DAug.applyTransforms();
+DAug = ag.Augmentation(args.aug, args.data_precision)
+data_transforms = DAug.applyTransforms()
 # target augmentation
-TAug = ag.Augmentation(args.aug_target, args.data_precision);
-target_transforms = TAug.applyTransforms();
+TAug = ag.Augmentation(args.aug_target, args.data_precision)
+target_transforms = TAug.applyTransforms()
 
 # load dataloader
 dsets, dset_loaders, dset_sizes, dset_classes = dlm.load_data_loader(args, args.db,\
@@ -64,11 +64,10 @@ def extract_HDF5():
                 for count, data in enumerate(pbar_epoch):
                     # pdb.set_trace()
                     if data:
-                        inputs, labels, ids = data;
+                        inputs, labels, ids = data
                         # pdb.set_trace()
-                        outputs,_ = model(inputs.squeeze(0).cuda())
-
-                        h,w = compute_width_height(outputs[-1].size()[-2:])
+                        outputs, _ = model(inputs.squeeze(0).cuda())
+                        h, w = compute_width_height(outputs[-1].size()[-2:])
                         feat = torch.cat([F.interpolate(i, size=(h,w), mode='area') for i in outputs],
                                       dim=1)
                         for c, g in enumerate(data_groups):

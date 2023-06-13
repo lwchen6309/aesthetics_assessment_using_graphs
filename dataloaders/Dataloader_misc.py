@@ -7,7 +7,7 @@ import AADB_Dataset
 # from torch_geometric.data import DataLoader as Dataloader_G
 # import numpy as np
 # import multiprocessing
-sys.path.append('../utils');
+sys.path.append('../utils')
 
 
 

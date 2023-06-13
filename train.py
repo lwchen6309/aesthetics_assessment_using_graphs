@@ -9,11 +9,11 @@ import datetime
 from termcolor import colored
 
 # Custom Modules
-sys.path.append('utils');
-sys.path.append('dataloaders');
-sys.path.append('models');
-sys.path.append('losses');
-sys.path.append('visuals');
+sys.path.append('utils')
+sys.path.append('dataloaders')
+sys.path.append('models')
+sys.path.append('losses')
+sys.path.append('visuals')
 
 import opts_train
 import Augmentation as ag
@@ -29,12 +29,12 @@ print(colored('\n'.join(sorted([str(i) + ' : ' + str(j) for (i, j) in vars(args)
 print('######################################')
 
 # input augmentation
-DAug = ag.Augmentation(args.aug, args.data_precision);
-data_transforms = DAug.applyTransforms();
+DAug = ag.Augmentation(args.aug, args.data_precision)
+data_transforms = DAug.applyTransforms()
 
 # target augmentation
-TAug = ag.Augmentation(args.aug_target, args.data_precision);
-target_transforms = TAug.applyTransforms();
+TAug = ag.Augmentation(args.aug_target, args.data_precision)
+target_transforms = TAug.applyTransforms()
 
 # load dataloader
 dsets, dset_loaders, dset_sizes, dset_classes = dlm.load_data_loader(args, args.db, data_transforms, target_transforms)
@@ -91,7 +91,7 @@ def train():
             pbar_epoch = tqdm(dset_loaders[phase], position=1, leave=False, unit=' batches')
             pbar_epoch.set_description(phase)
             for count, data in enumerate(pbar_epoch):
-                inputs, labels, ids = data;
+                inputs, labels, ids = data
                 # inputs.x = inputs.x.cuda();
                 # inputs.batch = inputs.batch.cuda()
                 # inputs.pos = inputs.pos.cuda().float()
@@ -126,7 +126,7 @@ def train():
                                 'model': model.state_dict(),
                                 'optimizer': optimizer.state_dict()
                             }
-                            torch.save(checkpoint, f);
+                            torch.save(checkpoint, f)
                 # scheduler.step()
     return 1
 

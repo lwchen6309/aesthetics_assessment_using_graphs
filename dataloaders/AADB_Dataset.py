@@ -102,7 +102,7 @@ class AIAG_Dataset_PyTorch_HDF5_MLSP_3(AIAG_Dataset_Pandas):
 
     def make_dataset(self):
         # pdb.set_trace()
-        ids = self.remove_missing_files(pd.read_csv(self.data));
+        ids = self.remove_missing_files(pd.read_csv(self.data))
         #if self.pilot != -1:
         if self.phase == 'train':
             ids = self.select_K_training_samples(ids)
@@ -113,12 +113,13 @@ class AIAG_Dataset_PyTorch_HDF5_MLSP_3(AIAG_Dataset_Pandas):
         # labels = ids[[str(i) for i in range(1,11)]].values
         # normed_labels = labels/ np.abs(labels.sum(axis =1)[:,None])
         # pdb.set_trace()
-        if self.args.A2_D == 1:
-            labels = ids['meanScore'].values/5.0
-        elif self.args.A2_D == 2:
-            labels = [*zip(ids['meanScore'].values / 5.0, ids['stdScore'].values)]
-        elif self.args.A2_D == 5:
-            labels = [[*map(float, v.split('$'))] for v in ids['scoreHist'].values]
+        labels = ids['meanScore'].values / 5.0
+        # if self.args.A2_D == 1:
+        #     labels = ids['meanScore'].values/5.0
+        # elif self.args.A2_D == 2:
+        #     labels = [*zip(ids['meanScore'].values / 5.0, ids['stdScore'].values)]
+        # elif self.args.A2_D == 5:
+        #     labels = [[*map(float, v.split('$'))] for v in ids['scoreHist'].values]
         img_labels = [*zip(imgs, labels, img_names)]
         class_count = {'A2': self.args.A2_D}
         classes = range(self.args.A2_D)
@@ -206,12 +207,13 @@ class AIAG_Dataset(AIAG_Dataset_Pandas):
         imgs = [os.path.join(self.root,i) for i in img_names]
         # labels = ids[[str(i) for i in range(1,11)]].values
         # normed_labels = labels/ np.abs(labels.sum(axis =1)[:,None])
-        if self.args.A2_D == 1:
-            labels = ids['meanScore'].values / 5.0
-        elif self.args.A2_D == 2:
-            labels = [*zip(ids['meanScore'].values / 5.0, ids['stdScore'].values)]
-        elif self.args.A2_D == 5:
-            labels = [[*map(float, v.split('$'))] for v in ids['scoreHist'].values]
+        labels = ids['meanScore'].values / 5.0
+        # if self.args.A2_D == 1:
+        #     labels = ids['meanScore'].values / 5.0
+        # elif self.args.A2_D == 2:
+        #     labels = [*zip(ids['meanScore'].values / 5.0, ids['stdScore'].values)]
+        # elif self.args.A2_D == 5:
+        #     labels = [[*map(float, v.split('$'))] for v in ids['scoreHist'].values]
         img_labels = [*zip(imgs, labels, img_names)]
         class_count = {'A2': self.args.A2_D}
         classes = range(self.args.A2_D)
