@@ -8,23 +8,25 @@ EXPERIMENT_ID=Extraction
 
 #Path to the CSV file containing AVA IDs
 #DB=meta/A2P2_FULL_Corrected.CSV
-DB=~/datasets/AADB/annotation/AADB_dataset.csv
-# DB=~/datasets/AADB/annotation/imgListTrainRegression_score.txt
+# DB=~/datasets/AADB/annotation/AADB_dataset.csv
+DB=~/datasets/ANSO/annotation/AADB_dataset.csv
 #Path to AVA images.
 #DATAPATH=/media/koustav/Naihati/Dataset/AVADataSet/
 #DATAPATH=/home/ghosalk/Datasets/AVADataSet/
 
 # DATAPATH=/data2/AADB/images/datasetImages_originalSize/
-DATAPATH=~/datasets/AADB/datasetImages_originalSize/
+# DATAPATH=~/datasets/AADB/datasetImages_originalSize/
+DATAPATH=~/datasets/ANSO/datasetImages_originalSize/
 
 #Directory to store the features.
 #SAVE_FEAT=/media/koustav/Naihati/Dataset/AVA/Features_8_5x5/
 # SAVE_FEAT=/data2/ghosalk/AADB/Features_8_5x5
-SAVE_FEAT=~/datasets/AADB/Features_8_5x5
+# SAVE_FEAT=~/datasets/AADB/Features_8_5x5
+SAVE_FEAT=~/datasets/ANSO/Features_8_5x5
 
 #Feature File Name
-# FEAT_FILE_NAME=32-bit_INC_RN_V2.h5
 FEAT_FILE_NAME=32-bit_INC_RN_V2.h5
+# FEAT_FILE_NAME=16-bit_INC_RN_V2.h5
 
 #Backbone. Currently supports Inc-ResNet-v2 only. Adding new backbones is trivial.
 BASE_MODEL=inceptionresnetv2

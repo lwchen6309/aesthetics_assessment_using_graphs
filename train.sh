@@ -12,12 +12,12 @@ MODEL=GAT_x3_GATP_MH
 #Path to the CSV file containing AVA IDs
 #DB=meta/A2P2_FULL_Corrected.CSV
 # DB=meta/AADB_dataset.csv
-DB=~/datasets/AADB/annotation/AADB_dataset.csv
+DB=~/datasets/ANSO/annotation/AADB_dataset.csv
 
 #Path to AVA images. Note, that images are not used here directly. Instead, this is used to check for missing files in the dataloader.
 #DATAPATH=/home/ghosalk/Datasets/AVADataSet/
 # DATAPATH=/data2/AADB/images/datasetImages_originalSize/
-DATAPATH=~/datasets/AADB/datasetImages_originalSize/
+DATAPATH=~/datasets/ANSO/datasetImages_originalSize/
 #Path to save the trained models
 # SAVE=/data2/ghosalk/AADB/models/
 SAVE=~/aesthetics_assessment_using_graphs/
@@ -29,13 +29,13 @@ SAVE_VISUALS=~/aesthetics_assessment_using_graphs/results
 #Path to load the feature graph from
 #FEATURE_PATH=/data2/ghosalk/AVA/Features_8_5x5/INC_RN_V2.h5
 # FEATURE_PATH=/data2/ghosalk/AADB/Features_8_5x5/32-bit_INC_RN_V2.h5
-FEATURE_PATH=~/datasets/AADB/Features_8_5x5/32-bit_INC_RN_V2.h5
+FEATURE_PATH=~/datasets/ANSO/Features_8_5x5/32-bit_INC_RN_V2.h5
 
 #Initial Learning Rate
 LR=1e-4
 
 #Batch size for training and validation
-BATCH_SIZE=16
+BATCH_SIZE=8
 VAL_BATCH_SIZE=16
 
 #Validate after every N epochs

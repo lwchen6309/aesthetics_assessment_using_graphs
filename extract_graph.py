@@ -46,6 +46,7 @@ data_groups = ['%d_%d_%d' % (i, j, k) for i in [0, 1] for j in [0, 1] for k in [
 # data_groups = data_groups[0:1]
 _ = [feature_file.create_group(g) for g in data_groups]
 
+
 # function to resize the smaller dimension to 5
 def compute_width_height(size, lower_dim = 5):
     if size[0]>size[1]:

@@ -46,7 +46,7 @@ def load_data_loader(args, db, data_transforms, target_transforms):
     dset_loaders = {x: torch.utils.data.DataLoader(dsets[x], \
     batch_size = batch_sizes[x], shuffle = x == 'train', num_workers = args.n_workers, \
     collate_fn = dsets[x].collate) for x in ['train', 'test']}
-        #note how dataloader is configured for shufle. no shuffle during validation
+    #note how dataloader is configured for shufle. no shuffle during validation
 
     dset_sizes = {x: len(dsets[x]) for x in ['train', 'test']}
     print ('Training Images : %d, Validation Images : %d'\

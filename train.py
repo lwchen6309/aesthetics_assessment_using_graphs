@@ -74,7 +74,8 @@ print(colored("Visual path: " + args.save_visuals + 'Exp: ' + args.exp_id +
 def train():
     # pdb.set_trace()
     epoch_loss = np.Inf
-    pbar_total = tqdm(range(args.num_epochs), position=0, leave=True, unit=' epochs')
+    # pbar_total = tqdm(range(args.num_epochs), position=0, leave=True, unit=' epochs')
+    pbar_total = tqdm(range(args.num_epochs))
     for epoch in pbar_total:
         criterion.set_epoch_count(epoch)  # Done to adjust loss weights based on epochs
         pbar_total.set_description(
